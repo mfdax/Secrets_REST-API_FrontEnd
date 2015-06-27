@@ -7,8 +7,17 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<% if alert %>
+  <%= alert %>
+<% end %>
 
-<%= yield %>
+<% if notice %>
+  <%= notice %>
+<% end %>
+
+<div class="container">
+  <%= yield %>
+</div>
 
 </body>
 </html>
