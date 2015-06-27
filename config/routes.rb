@@ -3,6 +3,6 @@ Rails.application.routes.draw do
   post  'signup' => 'users#create', as: :users
 
   get 'signin' => 'sessions#new', as: :sign_in
-  get 'auth' => 'sessions#create', as: :auth
+  post 'auth' => 'sessions#create', as: :auth
   delete 'signout' => 'sessions#delete', as: :sign_out
 end
