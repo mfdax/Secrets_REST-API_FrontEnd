@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'secrets/index'
+
+  get 'secrets/new'
+
+  get 'secrets/create'
+
   get   'signup' => 'users#new', as: :sign_up
   post  'signup' => 'users#create', as: :users
 
