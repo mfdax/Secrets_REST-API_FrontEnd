@@ -15,6 +15,11 @@
   <%= notice %>
 <% end %>
 
+<% if session[:email] != nil %>
+  The session[:email] IS.... <%= session[:email] %>
+  <button class"btn btn-default"><%= link_to "Sign Out", sign_out_path, method: :delete %></button>
+<% end %>
+
 <div class="container">
   <%= yield %>
 </div>
