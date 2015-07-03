@@ -8,8 +8,9 @@ class SessionsController < ApplicationController
     if http_response.code == 200
       user = JSON.parse(http_response)
       session[:email] = user["email"]
+      session[:user_id] = user["id"]
 
-      redirect_to sign_in_path, notice: "Signed..... In.😎"
+      redirect_to root_path, notice: "Signed..... In.😎"
     else
       flash.now[:alert] = "Couldn't log ya in :/."
     end
@@ -17,7 +18,8 @@ class SessionsController < ApplicationController
   end
 
   def delete
-    session.delete :email
-    redirect_to sign_in_path
+    # session.destroy :email
+    session[:email] = nil
+    redirect_to root_path
   end
 end

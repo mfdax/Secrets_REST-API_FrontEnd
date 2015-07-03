@@ -1,0 +1,13 @@
+<div style="height:500px">
+  <div id="logo">
+    <h1><a><span>Sign</span>Up</a></h1>
+  </div>
+
+  <%= simple_form_for :session, url: users_path, method: :post do |f| %>
+    <%= f.input :email %>
+    <%= f.input :name %>
+    <%= f.input :password %>
+    <%= f.input :password_confirmation %>
+    <%= f.submit "Sign Up", :class => 'btn btn-danger btn-block' %>
+  <% end %>
+</div>

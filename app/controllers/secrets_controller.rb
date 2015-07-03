@@ -1,6 +1,16 @@
 class SecretsController < ApplicationController
   def index
     @secrets = JSON.parse Http.headers("api-key" => "876bd5798a6fe2d3").get("http://localhost:3000/secrets/all.json")
+
+    # if session[:user_id] != nil
+      user_id = session[:user_id]
+      @mysecret = JSON.parse Http.headers("api-key" => "876bd5798a6fe2d3").get("http://localhost:3000/secrets/#{user_id}/user.json")
+    # end
+
+  end
+
+  def show
+    
   end
 
   def new

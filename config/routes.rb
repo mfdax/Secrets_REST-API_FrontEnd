@@ -9,5 +9,5 @@ Rails.application.routes.draw do
 
   get 'signin' => 'sessions#new', as: :sign_in
   post 'auth' => 'sessions#create', as: :auth
-  delete 'signout' => 'sessions#delete', as: :sign_out
+  delete 'sign_out' => 'sessions#delete', as: :sign_out
 end

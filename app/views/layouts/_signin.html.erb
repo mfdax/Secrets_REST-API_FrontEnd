@@ -1,0 +1,11 @@
+<div style="height:300px">
+  <div id="logo">
+    <h1><a><span>User</span>Login</a></h1>
+  </div>
+
+  <%= simple_form_for :session, url: auth_path, method: :post do |f| %>
+    <%= f.input :email, placeholder: 'secret@yoursecretemail.com' %>
+    <%= f.input :password, placeholder: 'Give me your bank password' %>
+    <%= f.submit "Log In", :class => 'btn btn-warning btn-block' %>
+  <% end %>
+</div>

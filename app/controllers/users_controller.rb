@@ -1,5 +1,9 @@
 class UsersController < ApplicationController
-  def new
+
+
+
+  def user_id
+    user_id = session[:user_id]
   end
 
   def create
@@ -8,9 +12,10 @@ class UsersController < ApplicationController
     if http_response.code == 201
       user = JSON.parse(http_response)
       session[:email] = user["email"]
+      session[:id] = user["id"]
       session[:key]   = user["key"]
 
-      redirect_to sign_up_path, notice: "You've signed up! :)"
+      redirect_to root_path, notice: "You've signed up! :)"
     else
       flash.now[:alert] = "Oops! Something wrong with your credentials."
     end

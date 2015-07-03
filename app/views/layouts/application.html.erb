@@ -6,23 +6,83 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
+
+<!-- This is th etop section where our work begins -->
+
 <body>
-<% if alert %>
-  <%= alert %>
-<% end %>
 
-<% if notice %>
-  <%= notice %>
-<% end %>
+<div class="row" style="margin:2em; border-bottom: 5px solid #fb4b00">
+  <div style="margin: 38px 0 28px 0" class="col-md-6">
+    <% if alert %>
+      <%= alert %>
+    <% end %>
 
-<% if session[:email] != nil %>
-  The session[:email] IS.... <%= session[:email] %>
-  <button class"btn btn-default"><%= link_to "Sign Out", sign_out_path, method: :delete %></button>
-<% end %>
+    <% if notice %>
+      <%= notice %>
+    <% end %>
 
-<div class="container">
-  <%= yield %>
+    <% if session[:email] != nil %>
+      <h1>Hi <%= session[:email] %>!
+        &nbsp;
+        <%= link_to "Sign Out", sign_out_path, method: :delete, :class => "btn btn-danger btn-lg" %>
+      </h1>
+    <% end %>
+  </div>
+
+  <div id="logo" class="col-md-6">
+    <h1 style="text-align:right"><a><span>Secrets</span></a></h1>
+  </div>
 </div>
+
+<!-- This is where the middle section begins -->
+
+<div>
+  <div class="col-md-4" style="height:800px; padding: 0 30px">
+    <div>
+      <% if session[:email] != nil %>
+        <%= render 'layouts/quotes' %>
+      <% else %>
+        <%= render 'layouts/signin' %>
+      <% end %>
+    </div>
+
+    <div>
+      <% if session[:email] != nil %>
+        <%= render 'layouts/new_secret' %>
+      <% else %>
+        <%= render 'layouts/new_user' %>
+      <% end %>
+    </div>
+  </div>
+<!-- This displays the 20 most recent secrets from ALL USERS -->
+  <div id="logo" class="col-md-7" style="background:#3e464a; height:800px; margin:10px">
+    <h1><a><span>Posted</span>Secrets</a></h1>
+    <div class="col-md-12" style="height:650px; overflow-y:scroll">
+      <%= render 'layouts/posted_secrets' %>
+    </div>
+  </div>
+
+<!-- This displays ONLY YOUR 20 most recent secrets -->
+  <!-- <div id="logo" class="col-md-4" style="background:#3e464a; height:800px; margin:10px"> -->
+    <!-- <h1><a><span>My</span>Secrets</a></h1> -->
+    <!-- <div class="col-md-12" style="height:650px; overflow-y:scroll"> -->
+      <!-- <% if session[:user_id] != nil %> -->
+        <!-- <%= render 'layouts/my_posted_secrets' %> -->
+      <!-- <% end %> -->
+    <!-- </div> -->
+  <!-- </div> -->
+
+</div>
+
+
+<!-- This is where the footer begins -->
+
+<div id="footer">
+	<p>
+		<!-- Footer Here -->
+  </p>
+</div>
+
 
 </body>
 </html>
